@@ -163,5 +163,6 @@ D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\refint\melody-a
 D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\melody-assesment.pdb
 D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\melody-assesment.genruntimeconfig.cache
 D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\ref\melody-assesment.dll
-D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\compressed\rg1qjtnm60-8jn8pc9xh1.gz
-D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\compressed\s2jclgtl3w-8jn8pc9xh1.gz
+D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\scopedcss\Components\Pages\Confirmation.razor.rz.scp.css
+D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\compressed\rg1qjtnm60-0gtrizl0ew.gz
+D:\001_Coding\melody-assesment\melody-assesment\obj\Debug\net9.0\compressed\s2jclgtl3w-0gtrizl0ew.gz

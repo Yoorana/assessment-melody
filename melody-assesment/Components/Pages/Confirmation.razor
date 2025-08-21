@@ -2,19 +2,41 @@
 @inject NavigationManager NavManager
 @rendermode InteractiveServer
 
-<PageTitle>Confirmation</PageTitle>
+<PageTitle>Confirm Shipment</PageTitle>
 
-<h1>Confirmation</h1>
+<div class="confirmation-container">
+    <h1 class="confirmation-title">Confirm Shipment</h1>
 
-<button class="btn back-btn" @onclick="GoBack">Back</button>
-
-<div>
-    <h5>Origin: @Origin</h5>
-    <h5>Destination: @Destination</h5>
-    <h5>Chosen Carrier: @Carrier</h5>
-    <h5>Delivery date: @(TravelDate == default ? "" : TravelDate.ToShortDateString())</h5>
+    <div class="confirmation-card">
+        <div class="confirmation-details">
+            <div class="confirmation-row">
+                <span class="confirmation-label">Origin:</span>
+                <span class="confirmation-value">@Origin</span>
+            </div>
+            <div class="confirmation-row">
+                <span class="confirmation-label">Destination:</span>
+                <span class="confirmation-value">@Destination</span>
+            </div>
+            <div class="confirmation-row">
+                <span class="confirmation-label">Chosen Carrier:</span>
+                <span class="confirmation-value">@Carrier</span>
+            </div>
+            <div class="confirmation-row">
+                <span class="confirmation-label">Delivery date:</span>
+                <span class="confirmation-value">@(TravelDate == default ? "" : TravelDate.ToString("dddd, d MMMM yyyy"))</span>
+            </div>
+        </div>
+        <div class="confirmation-actions">
+            <button class="back-btn" @onclick="GoBack">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#70CAB9" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Back
+            </button>
+            <button class="confirm-btn">Confirm Shipment</button>
+        </div>
+    </div>
 </div>
-<button class="btn confirm-btn">Confirm Shipment</button>
 
 @code {
     [Parameter, SupplyParameterFromQuery] public string Origin { get; set; } = string.Empty;
