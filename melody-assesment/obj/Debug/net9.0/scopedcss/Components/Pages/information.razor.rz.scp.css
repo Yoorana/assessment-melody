@@ -67,15 +67,41 @@
 .next-button-container[b-3wtb9bsowq] {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 32px;
   width: 100%;
 }
 
-.next-button-container .btn[b-3wtb9bsowq] {
-  padding: 12px 24px;
+.next-button[b-3wtb9bsowq] {
+  background: linear-gradient(90deg, #70cab9 0%, #00796b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 32px;
   font-size: 18px;
-  border-radius: 8px;
-  width: 250px;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(112, 202, 185, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.next-button:disabled[b-3wtb9bsowq] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-button:hover:not(:disabled)[b-3wtb9bsowq],
+.next-button:focus:not(:disabled)[b-3wtb9bsowq] {
+  background: linear-gradient(90deg, #00796b 0%, #70cab9 100%);
+  box-shadow: 0 6px 24px rgba(112, 202, 185, 0.22);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.next-arrow[b-3wtb9bsowq] {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .arrow-icon[b-3wtb9bsowq] {
@@ -122,4 +148,27 @@
 .route-suggestion[b-3wtb9bsowq] {
   margin-top: 8px;
   text-align: center;
+}
+
+.prediction-date-box[b-3wtb9bsowq] {
+  background: #f8f9fa;
+  border: 2px solid #70cab9;
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin: 20px auto 0 auto;
+  display: inline-block;
+  box-shadow: 0 2px 12px rgba(112, 202, 185, 0.08);
+  text-align: center;
+}
+
+.prediction-date-label[b-3wtb9bsowq] {
+  font-weight: bold;
+  color: #222;
+  margin-right: 8px;
+}
+
+.prediction-date-value[b-3wtb9bsowq] {
+  font-size: 18px;
+  color: #00796b;
+  font-weight: bold;
 }

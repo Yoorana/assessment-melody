@@ -54,16 +54,23 @@
         <input id="travelDate" type="date" @bind="TravelDate" class="route-input date-picker-middle" min="@TodayString"
             max="@MaxDateString" />
 
+        @* Delay prediction *@
         @if (IsTodaySelected)
         {
-            <div class="calendar-info" style="color: #007bff; margin-top: 0.5rem;">
-                Predicted delivery: 3 days from selected date
+            <div class="prediction-date-box">
+                <span class="prediction-date-label">Predicted delivery:</span>
+                <span class="prediction-date-value">
+                    3 days from selected date
+                </span>
             </div>
         }
         else if (IsWeekendSelected)
         {
-            <div class="calendar-info" style="color: #007bff; margin-top: 0.5rem;">
-                Parcel will be arrive on @NextMonday(TravelDate).ToString("dddd, d MMMM yyyy")
+            <div class="prediction-date-box">
+                <span class="prediction-date-label">Predicted delivery:</span>
+                <span class="prediction-date-value">
+                    Parcel will arrive on @NextMonday(TravelDate).ToString("dddd, d MMMM yyyy")
+                </span>
             </div>
         }
     </div>
@@ -81,7 +88,13 @@
 
 <!-- Next button -->
 <div class="next-button-container">
-    <button @onclick="GoToConfirmation" disabled="@(!AreInputsFilled())">Next</button>
+    <button class="next-button" @onclick="GoToConfirmation" disabled="@(!AreInputsFilled())">
+        Next
+        <svg class="next-arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#fff"
+            stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+    </button>
 </div>
 
 @code {
