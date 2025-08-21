@@ -1,5 +1,6 @@
 ﻿@page "/confirmation"
 @inject NavigationManager NavManager
+@inject IJSRuntime JS
 @rendermode InteractiveServer
 
 <PageTitle>Confirm Shipment</PageTitle>
@@ -7,6 +8,15 @@
 <div class="confirmation-container">
     <h1 class="confirmation-title">Confirm Shipment</h1>
 
+
+@if (showConfirmation)
+    {
+        <div class="shipment-confirmed-message">
+            <span>🎉 Shipment confirmed! 🎉</span>
+        </div>
+    }
+    else
+    {
     <div class="confirmation-card">
         <div class="confirmation-details">
             <div class="confirmation-row">
@@ -33,9 +43,10 @@
                 </svg>
                 Back
             </button>
-            <button class="confirm-btn">Confirm Shipment</button>
+            <button class="confirm-btn" @onclick="ConfirmShipment">Confirm Shipment</button>
         </div>
     </div>
+    }
 </div>
 
 @code {
@@ -48,5 +59,12 @@
         var url =
         $"information?origin={Uri.EscapeDataString(Origin)}&destination={Uri.EscapeDataString(Destination)}&carrier={Uri.EscapeDataString(Carrier)}&travelDate={TravelDate:yyyy-MM-dd}";
         NavManager.NavigateTo(url);
+    }
+    private bool showConfirmation = false;
+    private async Task ConfirmShipment()
+    {
+        showConfirmation = true;
+        await JS.InvokeVoidAsync("launchConfetti");
+        StateHasChanged();
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("melody-assesment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+357c97be35c6971949b29e27ef43f762421345c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e20631368d46c52f7f2e55f1ea429082230a776c")]
 [assembly: System.Reflection.AssemblyProductAttribute("melody-assesment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("melody-assesment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
