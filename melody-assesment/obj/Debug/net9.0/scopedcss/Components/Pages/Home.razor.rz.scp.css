@@ -29,3 +29,36 @@
   width: 64px;
   height: 64px;
 }
+
+.next-button[b-kpxah405xn] {
+  background: linear-gradient(90deg, #70cab9 0%, #00796b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(112, 202, 185, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.next-button:disabled[b-kpxah405xn] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-button:hover:not(:disabled)[b-kpxah405xn],
+.next-button:focus:not(:disabled)[b-kpxah405xn] {
+  background: linear-gradient(90deg, #00796b 0%, #70cab9 100%);
+  box-shadow: 0 6px 24px rgba(112, 202, 185, 0.22);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.next-arrow[b-kpxah405xn] {
+  display: inline-block;
+  vertical-align: middle;
+}
