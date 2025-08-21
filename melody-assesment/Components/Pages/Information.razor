@@ -29,12 +29,12 @@
         <!-- Dropdown -->
         <select @bind="SelectedName" class="route-select">
             <option value="" disabled>Select carrier</option>
-            <option value="postNL">PostNL</option>
+            <option value="postnl">PostNL</option>
             <option value="dpd">dpd</option>
             <option value="dhl">DHL</option>
             <option value="gls">GLS</option>
             <option value="ups">UPS</option>
-            <option value="fedex">fedex</option>
+            <option value="fedex">FedEx</option>
         </select>
 
         <!-- AI suggestion -->
@@ -44,7 +44,8 @@
                 <span class="suggested-carrier-label">
                     Suggested carrier: @SuggestedCarrierName
                 </span>
-                <img src="@CarrierImagePath" alt="Suggested Carrier" class="carrier-logo" style="cursor:pointer" />
+                <img src="@CarrierImagePath" alt="Suggested Carrier" class="carrier-logo" style="cursor:pointer"
+                    @onclick="SetCarrierToSuggestion" />
                 <div class="route-suggestion">@RouteSuggestion</div>
             </div>
         }
@@ -156,13 +157,17 @@
             var dest = Destination.Trim().ToLowerInvariant();
             return dest switch
             {
-                "brussels" => "DPD",
-                "new york" => "UPS",
-                _ => "PostNL"
+                "brussels" => "dpd",
+                "new york" => "ups",
+                _ => "postnl"
             };
         }
     }
 
+    private void SetCarrierToSuggestion()
+    {
+        SelectedName = SuggestedCarrierName.ToLowerInvariant();
+    }
 
     // Method to update the AI suggestion based on the selected carrier
     private string CarrierSuggestion =>
