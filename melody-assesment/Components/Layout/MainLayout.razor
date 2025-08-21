@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+@using MelodyAssesment.Components.Shared
+@using MelodyAssesment.Components.Layout
+@using MelodyAssesment.Components.NavMenu
+
+<!-- Wave at the bottom, behind everything -->
+<div class="wave-bottom">
+    <svg viewBox="0 0 1440 520" class="wave-svg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="waveGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#70CAB9" stop-opacity="1" />
+                <stop offset="100%" stop-color="#70CAB9" stop-opacity="0.2" />
+            </linearGradient>
+        </defs>
+        <path fill="url(#waveGradient)" fill-opacity="1" d="M0,520 
+                 L0,400 
+                 Q 360,520 720,420 
+                 T 1440,100 
+                 L1440,520 
+                 Z" />
+    </svg>
+</div>
+
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

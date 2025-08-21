@@ -1,0 +1,80 @@
+.route-layout[b-34dtg3c1wn] {
+    display: grid;
+    grid-template-columns: 250px auto 250px; /* left input - middle column - right input */
+    justify-content: center;
+    align-items: start; /* top-align inputs and arrow */
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.route-item[b-34dtg3c1wn] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.route-item label[b-34dtg3c1wn] {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.route-input[b-34dtg3c1wn] {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.route-arrow-column[b-34dtg3c1wn] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* spacing between arrow, dropdown, AI, date */
+}
+
+.arrow-icon[b-34dtg3c1wn] {
+    width: 40px;
+    height: 40px;
+    stroke: #333;
+}
+
+.route-select[b-34dtg3c1wn] {
+    width: 220px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.ai-suggestion-carrier[b-34dtg3c1wn] {
+    font-weight: bold;
+    text-align: center;
+}
+
+.date-picker-middle[b-34dtg3c1wn] {
+    width: 220px; /* same width as dropdown */
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Push everything below the arrow down */
+.route-arrow-column .route-select[b-34dtg3c1wn],
+.route-arrow-column .ai-suggestion-carrier[b-34dtg3c1wn],
+.route-arrow-column .date-picker-middle[b-34dtg3c1wn] {
+    margin-top: 10px; /* increase this value to push further down */
+}
+
+.next-button-container[b-34dtg3c1wn] {
+    display: flex;
+    justify-content: flex-end; /* keeps button on the right */
+    margin-top: 20px;
+    width: 100%;               /* container spans full width */
+}
+
+.next-button-container .btn[b-34dtg3c1wn] {
+    padding: 12px 24px;        /* taller */
+    font-size: 18px;           /* bigger text */
+    border-radius: 8px;        /* slightly rounded corners */
+    width: 250px;              /* set explicit width */
+}

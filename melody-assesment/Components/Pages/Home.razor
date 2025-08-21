@@ -1,0 +1,17 @@
+﻿@page "/"
+@inject NavigationManager NavManager
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<div class="viewport">
+  <h1>Welcome to Zineps</h1>
+  <button class="btn btn-primary" @onclick="GoToInformation">Create new shipping</button>
+</div>
+
+@code {
+  private void GoToInformation()
+  {
+    NavManager.NavigateTo("information");
+  }
+}

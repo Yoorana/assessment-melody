@@ -1,0 +1,30 @@
+﻿@page "/confirmation"
+@inject NavigationManager NavManager
+@rendermode InteractiveServer
+
+<PageTitle>Confirmation</PageTitle>
+
+<h1>Confirmation</h1>
+
+<button class="btn back-btn" @onclick="GoBack">Back</button>
+
+<div>
+    <h5>Origin: @Origin</h5>
+    <h5>Destination: @Destination</h5>
+    <h5>Chosen Carrier: @Carrier</h5>
+    <h5>Delivery date: @(TravelDate == default ? "" : TravelDate.ToShortDateString())</h5>
+</div>
+<button class="btn confirm-btn">Confirm Shipment</button>
+
+@code {
+    [Parameter, SupplyParameterFromQuery] public string Origin { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public string Destination { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public string Carrier { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public DateTime TravelDate { get; set; }
+    private void GoBack()
+    {
+        var url =
+        $"information?origin={Uri.EscapeDataString(Origin)}&destination={Uri.EscapeDataString(Destination)}&carrier={Uri.EscapeDataString(Carrier)}&travelDate={TravelDate:yyyy-MM-dd}";
+        NavManager.NavigateTo(url);
+    }
+}

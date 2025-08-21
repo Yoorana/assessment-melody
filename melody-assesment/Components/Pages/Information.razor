@@ -1,0 +1,143 @@
+﻿@page "/information"
+@inject NavigationManager NavManager
+@rendermode InteractiveServer
+
+<PageTitle>Information</PageTitle>
+
+<h1>Information</h1>
+
+<div class="route-layout">
+    <!-- Origin -->
+    <div class="route-item">
+        <label for="origin">Origin</label>
+        <input id="origin" @bind="Origin" class="route-input" placeholder="Enter origin" />
+    </div>
+
+    <!-- Middle column: arrow + dropdown + AI suggestion + date picker -->
+    <div class="route-arrow-column">
+        <!-- Arrow -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+        </svg>
+
+        <!-- Dropdown -->
+        <select @bind="SelectedName" class="route-select">
+            <option value="" disabled>Select carrier</option>
+            <option value="postNL">PostNL</option>
+            <option value="dpd">dpd</option>
+            <option value="dhl">DHL</option>
+            <option value="gls">GLS</option>
+            <option value="ups">UPS</option>
+            <option value="fedex">fedex</option>
+        </select>
+
+        <!-- AI suggestion -->
+        @if (ShowSuggestion())
+        {
+            <div class="ai-suggestion-carrier">
+                <h5>@CarrierSuggestion</h5>
+                <!-- ADDED: Route suggestion -->
+                <div class="route-suggestion">@RouteSuggestion</div>
+            </div>
+        }
+
+        <!-- Date picker -->
+        <input id="travelDate" type="date" @bind="TravelDate" class="route-input date-picker-middle" min="@TodayString"
+            max="@MaxDateString" />
+
+        @if (IsTodaySelected)
+        {
+            <div class="calendar-info" style="color: #007bff; margin-top: 0.5rem;">
+                Predicted delivery: 3 days from selected date
+            </div>
+        }
+        else if (IsWeekendSelected)
+        {
+            <div class="calendar-info" style="color: #007bff; margin-top: 0.5rem;">
+                Parcel will be arrive on @NextMonday(TravelDate).ToString("dddd, d MMMM yyyy")
+            </div>
+        }
+    </div>
+
+    <!-- Destination -->
+    <div class="route-item">
+        <label for="destination">Destination</label>
+        <input id="destination" @bind="Destination" class="route-input" placeholder="Enter destination" />
+    </div>
+</div>
+
+<!-- Next button -->
+<div class="next-button-container">
+    <button @onclick="GoToConfirmation" disabled="@(!AreInputsFilled())">Next</button>
+</div>
+
+@code {
+    // Parameters for navigation
+    [Parameter, SupplyParameterFromQuery] public string Origin { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public string Destination { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public DateTime TravelDate { get; set; } = DateTime.Today;
+    private string SelectedName { get; set; } = string.Empty;
+
+    // Calander selection of min and max date
+    private string TodayString => DateTime.Today.ToString("yyyy-MM-dd");
+    private string MaxDateString => DateTime.Today.AddYears(1).ToString("yyyy-MM-dd");
+    protected override void OnInitialized()
+    {
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var carrier = query["carrier"];
+        if (!string.IsNullOrEmpty(carrier))
+        {
+            SelectedName = carrier;
+        }
+        if (TravelDate == default)
+        {
+            TravelDate = DateTime.Today;
+        }
+    }
+    private bool IsTodaySelected => TravelDate.Date == DateTime.Today;
+    private bool IsWeekendSelected =>
+    TravelDate.DayOfWeek == DayOfWeek.Saturday || TravelDate.DayOfWeek == DayOfWeek.Sunday;
+    private DateTime NextMonday(DateTime date)
+    {
+        int daysUntilMonday = ((int)DayOfWeek.Monday - (int)date.DayOfWeek + 7) % 7;
+        daysUntilMonday = daysUntilMonday == 0 ? 7 : daysUntilMonday; // If already Monday, go to next week
+        return date.AddDays(daysUntilMonday);
+    }
+    private string DebugMessage { get; set; } = "";
+
+    // Method to disable the next button if inputs are not filled
+    private bool AreInputsFilled()
+    {
+        return !string.IsNullOrWhiteSpace(Origin)
+        && !string.IsNullOrWhiteSpace(Destination)
+        && !string.IsNullOrWhiteSpace(SelectedName);
+    }
+
+    // Method to navigate to the confirmation page with parameters
+    private void GoToConfirmation()
+    {
+        var url =
+        $"confirmation?origin={Uri.EscapeDataString(Origin)}&destination={Uri.EscapeDataString(Destination)}&carrier={Uri.EscapeDataString(SelectedName)}&travelDate={TravelDate:yyyy-MM-dd}";
+        NavManager.NavigateTo(url);
+    }
+
+    // Method to update the AI suggestion based on the selected carrier
+    private string CarrierSuggestion =>
+    Destination.Trim().Equals("brussels", StringComparison.OrdinalIgnoreCase)
+    ? "Suggested carrier: dpd"
+    : Destination.Trim().Equals("new york", StringComparison.OrdinalIgnoreCase)
+    ? "Suggested carrier: UPS"
+    : "Suggested carrier: PostNL";
+    private bool ShowSuggestion() =>
+    !string.IsNullOrWhiteSpace(Origin) && !string.IsNullOrWhiteSpace(Destination);
+
+    private string RouteSuggestion =>
+    Destination.Trim().Equals("brussels", StringComparison.OrdinalIgnoreCase)
+    ? "The parcel will be transported through Air freight"
+    : Destination.Trim().Equals("new york", StringComparison.OrdinalIgnoreCase)
+    ? "The parcel will be transported through ocean freight"
+    : "The parcel will be transported through rail transport";
+}

@@ -1,0 +1,10 @@
+.viewport[b-wrmm9lapiz] {
+  padding: 8px;
+  margin: 16px;
+  box-sizing: border-box;
+}
+
+.card[b-wrmm9lapiz] {
+  max-width: 400px;
+  margin: 0 auto;
+}

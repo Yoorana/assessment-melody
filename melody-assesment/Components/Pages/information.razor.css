@@ -1,0 +1,80 @@
+.route-layout {
+    display: grid;
+    grid-template-columns: 250px auto 250px; /* left input - middle column - right input */
+    justify-content: center;
+    align-items: start; /* top-align inputs and arrow */
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.route-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.route-item label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.route-input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.route-arrow-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* spacing between arrow, dropdown, AI, date */
+}
+
+.arrow-icon {
+    width: 40px;
+    height: 40px;
+    stroke: #333;
+}
+
+.route-select {
+    width: 220px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.ai-suggestion-carrier {
+    font-weight: bold;
+    text-align: center;
+}
+
+.date-picker-middle {
+    width: 220px; /* same width as dropdown */
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Push everything below the arrow down */
+.route-arrow-column .route-select,
+.route-arrow-column .ai-suggestion-carrier,
+.route-arrow-column .date-picker-middle {
+    margin-top: 10px; /* increase this value to push further down */
+}
+
+.next-button-container {
+    display: flex;
+    justify-content: flex-end; /* keeps button on the right */
+    margin-top: 20px;
+    width: 100%;               /* container spans full width */
+}
+
+.next-button-container .btn {
+    padding: 12px 24px;        /* taller */
+    font-size: 18px;           /* bigger text */
+    border-radius: 8px;        /* slightly rounded corners */
+    width: 250px;              /* set explicit width */
+}
