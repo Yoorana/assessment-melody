@@ -1,36 +1,48 @@
 .navbar-toggler[b-x4p16i1b5j] {
   appearance: none;
   cursor: pointer;
-  width: 3.5rem;
-  height: 2.5rem;
-  color: white;
+  width: 56px;
+  height: 40px;
+  color: rgb(101, 103, 103);
   position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  top: 8px;
+  right: 16px;
+  border: 1px solid rgb(255, 255, 255);
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
-    no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
+    no-repeat center/28px rgb(255, 255, 255);
 }
 
 .navbar-toggler:checked[b-x4p16i1b5j] {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(101, 103, 103);
 }
 
 .top-row[b-x4p16i1b5j] {
-  min-height: 3.5rem;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgb(234, 236, 236);
+  color: rgb(178, 178, 178);
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+  padding-left: 0;
 }
 
 .navbar-brand[b-x4p16i1b5j] {
-  font-size: 1.1rem;
+  color: rgb(136, 136, 136) !important;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
 
 .bi[b-x4p16i1b5j] {
   display: inline-block;
   position: relative;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.75rem;
+  width: 19px;
+  height: 19px;
+  margin-right: 12px;
   top: -1px;
   background-size: cover;
 }
@@ -40,7 +52,7 @@
 }
 
 .bi-plus-square-fill-nav-menu[b-x4p16i1b5j] {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-plus-square-fill' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' class='bi bi-check-square-fill' viewBox='0 0 16 16'%3E%3Cpath d='M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.97 5.97a.75.75 0 0 1 0 1.06l-3.992 3.992a.75.75 0 0 1-1.06 0L5.324 8.384a.75.75 0 1 1 1.06-1.06l1.094 1.093 3.462-3.461a.75.75 0 0 1 1.06 0z'/%3E%3C/svg%3E");
 }
 
 .bi-list-nested-nav-menu[b-x4p16i1b5j] {
@@ -48,42 +60,47 @@
 }
 
 .nav-item[b-x4p16i1b5j] {
-  font-size: 0.9rem;
-  padding-bottom: 0.5rem;
+  font-size: 14px;
+  padding-bottom: 8px;
 }
 
 .nav-item:first-of-type[b-x4p16i1b5j] {
-  padding-top: 1rem;
+  padding-top: 16px;
 }
 
 .nav-item:last-of-type[b-x4p16i1b5j] {
-  padding-bottom: 1rem;
+  padding-bottom: 16px;
 }
 
 .nav-item[b-x4p16i1b5j]  .nav-link {
-  color: #d7d7d7;
+  color: rgb(95, 96, 96); /* text that is not selected */
   background: none;
   border: none;
   border-radius: 4px;
-  height: 3rem;
+  height: 48px;
   display: flex;
   align-items: center;
-  line-height: 3rem;
+  line-height: 48px;
   width: 100%;
 }
 
 .nav-item[b-x4p16i1b5j]  a.active {
-  background-color: rgba(255, 255, 255, 0.37);
-  color: white;
+  background-color: rgb(143, 146, 145); /* active link tab */
+  color: rgb(202, 203, 203); /* active link text */
 }
 
 .nav-item[b-x4p16i1b5j]  .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: rgb(109, 109, 109);
 }
 
 .nav-scrollable[b-x4p16i1b5j] {
   display: none;
+  background: rgb(234, 236, 236) !important;
+  color: rgb(76, 78, 78);
+  min-height: 1000px;
+  padding-top: 16px;
+  border-right: none;
 }
 
 .navbar-toggler:checked ~ .nav-scrollable[b-x4p16i1b5j] {
@@ -100,7 +117,7 @@
     display: block;
 
     /* Allow sidebar to scroll for tall menus */
-    height: calc(100vh - 3.5rem);
+    height: calc(100% - 56px);
     overflow-y: auto;
   }
 }
@@ -108,4 +125,12 @@
 .zineps-logo[b-x4p16i1b5j] {
   width: 100%;
   height: 40px;
+}
+
+.nav-scrollable[b-x4p16i1b5j],
+.sidebar[b-x4p16i1b5j],
+.nav[b-x4p16i1b5j],
+.nav-link[b-x4p16i1b5j],
+.navbar-brand[b-x4p16i1b5j] {
+  font-weight: bold !important;
 }
