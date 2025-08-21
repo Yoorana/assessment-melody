@@ -398,3 +398,36 @@ main[b-gxqlhzede6] {
   background: none;
   fill: none;
 }
+
+.origin-label svg[b-3wtb9bsowq] {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.destination-label svg[b-3wtb9bsowq] {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.ai-suggestion-carrier[b-3wtb9bsowq] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.carrier-logo[b-3wtb9bsowq] {
+  height: 40px;
+  display: block;
+  cursor: pointer;
+}
+
+.suggested-carrier-label[b-3wtb9bsowq] {
+  font-size: 16px;
+  color: #222;
+}
+
+.route-suggestion[b-3wtb9bsowq] {
+  margin-top: 8px;
+  text-align: center;
+}

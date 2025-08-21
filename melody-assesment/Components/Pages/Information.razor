@@ -9,7 +9,12 @@
 <div class="route-layout">
     <!-- Origin -->
     <div class="route-item">
-        <label for="origin">Origin</label>
+        <label for="origin" class="origin-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#222" viewBox="0 0 16 16">
+                <path
+                    d="M8 .5l-6 6V15a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V11h2v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V6.5l-6-6zm5 6.5V15h-3v-4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v4H3V7l5-5 5 5z" />
+            </svg>
+        </label>
         <input id="origin" @bind="Origin" class="route-input" placeholder="Enter origin" />
     </div>
 
@@ -36,8 +41,10 @@
         @if (ShowSuggestion())
         {
             <div class="ai-suggestion-carrier">
-                <h5>@CarrierSuggestion</h5>
-                <!-- ADDED: Route suggestion -->
+                <span class="suggested-carrier-label">
+                    Suggested carrier: @SuggestedCarrierName
+                </span>
+                <img src="@CarrierImagePath" alt="Suggested Carrier" class="carrier-logo" style="cursor:pointer" />
                 <div class="route-suggestion">@RouteSuggestion</div>
             </div>
         }
@@ -62,7 +69,11 @@
 
     <!-- Destination -->
     <div class="route-item">
-        <label for="destination">Destination</label>
+        <label for="destination" class="destination-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#222" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 1 0 2 6c0 4.314 6 10 6 10zm0-8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+            </svg>
+        </label>
         <input id="destination" @bind="Destination" class="route-input" placeholder="Enter destination" />
     </div>
 </div>
@@ -122,6 +133,36 @@
         $"confirmation?origin={Uri.EscapeDataString(Origin)}&destination={Uri.EscapeDataString(Destination)}&carrier={Uri.EscapeDataString(SelectedName)}&travelDate={TravelDate:yyyy-MM-dd}";
         NavManager.NavigateTo(url);
     }
+
+    // carrier image path
+    private string? CarrierImagePath
+    {
+        get
+        {
+            var dest = Destination.Trim().ToLowerInvariant();
+            return dest switch
+            {
+                "brussels" => "images/dpd-logo.svg",
+                "new york" => "images/ups-logo.svg",
+                _ => "images/postnl-logo-oranje.jpg"
+            };
+        }
+    }
+
+    private string SuggestedCarrierName
+    {
+        get
+        {
+            var dest = Destination.Trim().ToLowerInvariant();
+            return dest switch
+            {
+                "brussels" => "DPD",
+                "new york" => "UPS",
+                _ => "PostNL"
+            };
+        }
+    }
+
 
     // Method to update the AI suggestion based on the selected carrier
     private string CarrierSuggestion =>
